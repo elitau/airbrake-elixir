@@ -6,11 +6,11 @@ defmodule Airbrake do
 
   def report(exception, options \\ []) do
     stacktrace = System.stacktrace
-    spawn fn ->
+    # spawn fn ->
       post(notify_url,
            Payload.new(exception, stacktrace, options) |> to_json,
            @request_headers)
-    end
+    # end
   end
 
   def to_json(payload) do
